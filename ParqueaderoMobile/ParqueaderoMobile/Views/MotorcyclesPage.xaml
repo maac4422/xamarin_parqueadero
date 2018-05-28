@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ParqueaderoMobile.Views.MotorcyclesPage"
+             xmlns:common="clr-namespace:ParqueaderoMobile.Views;assembly=ParqueaderoMobile"
+             xmlns:customControls="clr-namespace:UserInterfaceLayer.CustomControls;assembly=UserInterfaceLayer"
+             xmlns:markupExtensions="clr-namespace:UserInterfaceLayer.MarkupExtension;assembly=UserInterfaceLayer"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Motos">
+    <ContentPage.Content>
+        <AbsoluteLayout
+            BindingContext="{Binding Motorcycles}">
+            <StackLayout
+                Padding="20">
+                <common:VehiclesReusablePage />
+            </StackLayout>
+            <customControls:ImageButton 
+                AutomationId="ButtonAddMotorcycle"
+                Source="{markupExtensions:ImageResource SourceImage='plus'}"
+                WidthRequest="60"
+                Command="{Binding AddMotorcycleCommand}"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                AbsoluteLayout.LayoutBounds="1,1,-1,-1"/>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

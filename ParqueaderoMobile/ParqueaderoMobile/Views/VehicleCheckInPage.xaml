@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ParqueaderoMobile.Views.VehicleCheckInPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Registrar Ingreso">
+    <ContentPage.Content>
+        <AbsoluteLayout
+            BindingContext="{Binding VehicleCheckIn}"
+            BackgroundColor="Silver">
+
+            <StackLayout
+                Padding="20">
+                <Frame
+                    HasShadow="true">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition
+                                Width="*"/>
+                            <ColumnDefinition
+                                Width="2*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontSize="Medium"
+                            FontAttributes="Bold"
+                            Text="Placa"
+                            VerticalOptions="CenterAndExpand"/>
+
+                        <Entry
+                            AutomationId="EntryLicencePlate"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            FontSize="Medium"
+                            FontAttributes="Bold"
+                            Placeholder="Ingresa la placa..."
+                            Text="{Binding LicencePlate, Mode=TwoWay}"/>
+
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            FontSize="Medium"
+                            FontAttributes="Bold"
+                            IsVisible="{Binding IsVisibleDisplacement}"
+                            Text="Cilindraje"
+                            VerticalOptions="CenterAndExpand"/>
+
+                        <Entry
+                            AutomationId="EntryDisplacement"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            FontSize="Medium"
+                            FontAttributes="Bold"
+                            IsVisible="{Binding IsVisibleDisplacement}"
+                            Keyboard="Numeric"
+                            Placeholder="Ingresa el cilindraje..."
+                            Text="{Binding Displacement, Mode=TwoWay}"/>
+                    </Grid>
+                </Frame>
+
+                <StackLayout>
+                    <Button
+                        AutomationId="CheckInVehicleButton"
+                        BackgroundColor="Purple"
+                        BorderRadius="23"
+                        HeightRequest="46"
+                        HorizontalOptions="FillAndExpand"
+                        Command="{Binding CheckInVehicleCommand}"
+                        Text="Registrar"
+                        TextColor="White"/>
+                </StackLayout>
+                
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

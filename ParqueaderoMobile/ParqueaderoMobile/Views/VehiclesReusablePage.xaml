@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ParqueaderoMobile.Views.VehiclesReusablePage"
+             xmlns:customControls="clr-namespace:UserInterfaceLayer.CustomControls;assembly=UserInterfaceLayer"
+             xmlns:markupExtensions="clr-namespace:UserInterfaceLayer.MarkupExtension;assembly=UserInterfaceLayer">
+    <ListView 
+        AutomationId="VehicleListView"
+        HasUnevenRows="true" 
+        IsPullToRefreshEnabled="true"
+        IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+        ItemsSource="{Binding Vehicles , Mode=TwoWay}"
+        SeparatorVisibility="None"
+        RefreshCommand="{Binding RefreshCommand}">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Frame
+                        AutomationId="FrameItemVehicle"
+                        CornerRadius="10"
+                        HasShadow="true"
+                        Margin="5,5,30,5">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding SelectVehicleCommand}"/>
+                        </Frame.GestureRecognizers>
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout 
+                                Grid.Column="0">
+                                <StackLayout
+                                    Orientation="Horizontal">
+                                    <Label 
+                                        FontAttributes="Bold"
+                                        FontSize="Medium" 
+                                        Text="Placa: "
+                                        TextColor="Black" />
+
+                                    <Label 
+                                        
+                                        FontSize="Medium" 
+                                        Text="{Binding LicencePlate}"
+                                        TextColor="Black" />
+                                </StackLayout>
+
+                                <StackLayout
+                                    Orientation="Horizontal">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="Medium" 
+                                        Text="Entrada: "
+                                        TextColor="Black" />
+                                    <Label
+                                        FontSize="Medium" 
+                                        Text="{Binding EntryTime}"
+                                        TextColor="Black" />
+                                </StackLayout>
+                               
+                            </StackLayout>
+                            <StackLayout
+                                Grid.Column="1">
+                                
+                                <customControls:ImageButton 
+                                    AutomationId="CheckOutVehicleButton"
+                                    Source="{markupExtensions:ImageResource SourceImage='logout'}"
+                                    Command="{Binding CheckOutVehicleCommand}"
+                                    CommandParameter="{Binding .}"
+                                    WidthRequest="50"/>
+
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</StackLayout>

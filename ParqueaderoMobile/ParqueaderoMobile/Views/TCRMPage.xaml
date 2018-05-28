@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ParqueaderoMobile.Views.TCRMPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="TCRM">
+    <ContentPage.Content>
+        <AbsoluteLayout
+            BindingContext="{Binding TCRM}"
+            BackgroundColor="Silver">
+            <StackLayout
+                Padding="20">
+                <Frame
+                    HasShadow="true">
+                    <StackLayout>
+                        <Label
+                            FontSize="Large"
+                            FontAttributes="Bold"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="Center"
+                            Text="TRM del Dolar"/>
+
+                        <Grid
+                            Padding="0,5,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition
+                                    Width="2*"/>
+                                <ColumnDefinition
+                                    Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label
+                                FontSize="Large"
+                                FontAttributes="Bold"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Text="Moneda: " />
+                            <Label
+                                FontSize="Large"
+                                FontAttributes="Bold"
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Text="{Binding TCRMObject.Unit}" />
+
+                            <Label
+                                FontSize="Large"
+                                FontAttributes="Bold"
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Text="Valor de 1 Dolar: " />
+                            <Label
+                                FontSize="Large"
+                                FontAttributes="Bold"
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Text="{Binding TCRMObject.Value, StringFormat='${0}'}" />
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ParqueaderoMobile.Views.CarsPage"
+             xmlns:common="clr-namespace:ParqueaderoMobile.Views;assembly=ParqueaderoMobile"
+             xmlns:customControls="clr-namespace:UserInterfaceLayer.CustomControls;assembly=UserInterfaceLayer"
+             xmlns:markupExtensions="clr-namespace:UserInterfaceLayer.MarkupExtension;assembly=UserInterfaceLayer"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Carros">
+    <ContentPage.Content>
+        <AbsoluteLayout
+            BindingContext="{Binding Cars}">
+            <StackLayout
+                Padding="20">
+                <common:VehiclesReusablePage />
+            </StackLayout>
+            <customControls:ImageButton 
+                AutomationId="ButtonAddCar"
+                Source="{markupExtensions:ImageResource SourceImage='plus'}"
+                Command="{Binding AddCarCommand}"
+                WidthRequest="60"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                AbsoluteLayout.LayoutBounds="1,1,-1,-1">
+            </customControls:ImageButton>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

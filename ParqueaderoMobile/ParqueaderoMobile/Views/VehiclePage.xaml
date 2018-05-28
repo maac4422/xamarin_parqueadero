@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ParqueaderoMobile.Views.VehiclePage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Vehiculo">
+    <ContentPage.Content>
+        <AbsoluteLayout
+            BindingContext="{Binding Vehicle}"
+            BackgroundColor="Silver">
+            <StackLayout
+                Padding="20">
+                <Frame
+                    HasShadow="true">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition
+                                Width="*"/>
+                            <ColumnDefinition
+                                Width="2*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label
+                            FontSize="Large"
+                            FontAttributes="Bold"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Text="Placa: "/>
+
+                        <Label
+                            FontSize="Large"
+                            FontAttributes="Bold"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Text="{Binding Vehicle.LicencePlate}"/>
+
+                        <Label
+                            FontSize="Medium"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Text="Cilindraje:"/>
+
+                        <Label
+                            FontSize="Medium"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Text="{Binding Vehicle.Displacement}"/>
+
+                        <Label
+                            FontSize="Medium"
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Text="Hora Entrada:"/>
+
+                        <Label
+                            FontSize="Medium"
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Text="{Binding Vehicle.EntryTime}"/>
+
+                        <Label
+                            FontSize="Medium"
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            Text="Tipo Vehiculo:"/>
+
+                        <Label
+                            FontSize="Medium"
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Text="{Binding VehicleType}"/>
+
+                    </Grid>
+                </Frame>
+
+                <StackLayout>
+                    <Button
+                        AutomationId="CheckOutVehicleButton"
+                        BackgroundColor="Purple"
+                        BorderRadius="23"
+                        HeightRequest="46"
+                        HorizontalOptions="FillAndExpand"
+                        Command="{Binding CheckOutVehicleCommand}"
+                        Text="Retirar"
+                        TextColor="White"/>
+                </StackLayout>
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>
